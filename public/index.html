@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="application-name" content="LChat" />
+    <meta name="theme-color" content="#2A56C6" />
+    <title>LChat</title>
+
+    <link rel="manifest" href="manifest.json" />
+    <link rel="apple-touch-icon-precomposed" href="./img/chat-icon-empty.png" />
+
+    <link rel="stylesheet" type="text/css" href="/css/style.css" />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="initModal">
+      <div id="step1" class="one_step">
+        <img src="./img/logoColor.png" alt="LChat" />
+        <h1 class="appname">LChat</h1>
+        <input
+          type="submit"
+          class="login"
+          onclick="login();"
+          value="Tham gia"
+        />
+      </div>
+      <div id="step2" class="two_step">
+        <h1 class="appname">LChat</h1>
+        <h3>Vui lòng nhập tên để tham gia trò chuyện</h3>
+        <input
+          type="text"
+          class="username"
+          id="username"
+          axlength="25"
+          placeholder="Tên của tôi là?"
+        />
+      </div>
+    </div>
+
+    <div class="header">
+      <div class="headname">LChat</div>
+      <span id="status"></span>
+      <a href="javascript:%20x()" onclick="op_set();" class="cmd-m chk"
+        ><i class="material-icons">settings</i></a
+      >
+      <div id="set-i" class="set-i chk">
+        <input
+          type="text"
+          class="image"
+          id="image"
+          placeholder="Nhập liên kết (url) để đặt ảnh đại diện"
+        />
+      </div>
+      <input
+        class="exit"
+        type="button"
+        title="Thoát"
+        value="exit_to_app"
+        onclick="localStorage.removeItem('username');localStorage.removeItem('image');location.reload();"
+      />
+    </div>
+
+    <div id="wrap" class="wrapper"></div>
+
+    <img id="pastedImage" />
+    <input
+      class="message"
+      type="text"
+      id="emoji_c"
+      maxlength="800"
+      placeholder="Nhập nội dung..."
+      value=""
+    />
+    <input class="emoji_b" type="submit" onclick="emoji_alert()" value="mood" />
+    <input class="send" type="submit" id="send" value="send" />
+
+    <div id="gif_box" class="gif-search-box">
+      <form id="gif-search-form">
+        <input type="text" id="gif-search-input" placeholder="Ảnh gif" />
+        <a class="emoji_b" onclick="gif_box()"
+          ><i class="material-icons gif-btn">gif</i></a
+        >
+        <input class="send" type="submit" id="search-btn" value="search" />
+      </form>
+      <div class="error-container"></div>
+      <div class="pic-container"></div>
+    </div>
+
+    <script src="/js/socket.js"></script>
+    <script
+      src="https://code.jquery.com/jquery-3.7.0.js"
+      integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM="
+      crossorigin="anonymous"
+    ></script>
+    <script src="/js/index.js"></script>
+  </body>
+</html>
