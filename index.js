@@ -28,6 +28,8 @@ io.on("connection", (socket) => {
 });
 
 // ====================== ROUTES ======================
+const getChat = require("./routes/index");
+app.use("/chats", getChat);
 
 server.listen(port, () => {
   console.log("Running on Port: " + port);

@@ -5,16 +5,15 @@ const Chats = require("./../models/Chat");
 
 const router = express.Router();
 
-router.route("/").get((req, res, next) => {
-  res.setHeader("Content-Type", "application/json");
-  res.statusCode = 200;
-
-  connectdb.then((db) => {
-    let data = Chats.find({ message: "Anonymous" });
-    Chats.find({}).then((chat) => {
-      res.json(chat);
-    });
-  });
+router.route("/").get(async (req, res) => {
+  try {
+    const messages = await Chats.find();
+    res.json(messages);
+    res.status({ status: "GET request received" });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Server error" });
+  }
 });
 
 module.exports = router;
