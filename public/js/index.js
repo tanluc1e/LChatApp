@@ -4,7 +4,9 @@ var wrap = document.getElementById("wrap"),
   submit = document.getElementById("send"),
   input = document.getElementsByClassName("message")[0],
   usernameInput = document.getElementById("username"),
-  user = "" || localStorage.getItem("username");
+  userimageInput = document.getElementById("image"),
+  user = "" || localStorage.getItem("username"),
+  image = "" || localStorage.getItem("userphoto");
 
 function checkTime(e) {
   return e < 10 && (e = "0" + e), e;
@@ -13,6 +15,12 @@ function checkTime(e) {
 (function checkLogin() {
   if (user) {
     $(".initModal").css("display", "none");
+  }
+})();
+
+(function checkPhoto() {
+  if (image) {
+    $(".chk").css("display", "none");
   }
 })();
 
@@ -150,6 +158,7 @@ $(document).ready(function () {
   (document.getElementById("pastedImage").onclick = function (e) {
     document.getElementById("emoji_c").value = "";
   });
+
 // LOGIN
 function login() {
   document.getElementById("step1").classList.toggle("oplog"),
@@ -279,6 +288,15 @@ function loginEnter(event, value) {
   }
 }
 
+// SET PHOTO
+function photoEnter(event, value) {
+  if (event.key === "Enter") {
+    image = value;
+    $(".chk").css("display", "none");
+    localStorage.setItem("userphoto", image);
+  }
+}
+
 //SEND
 submit.onclick = function () {
   var tm = new Date();
@@ -287,7 +305,7 @@ submit.onclick = function () {
     '<div class="msb"><div onclick="DoSmilie(\'' +
     user +
     '\');" class="cover" style="background-image: url(' +
-    user +
+    image +
     ');"></div><div class="cover_n">' +
     user +
     "</div><span>" +
@@ -301,6 +319,7 @@ submit.onclick = function () {
 
   socket.emit("username", user);
   socket.emit("chat message", input.value);
+  socket.emit("userphoto", image);
 
   input.value = "";
 };
@@ -320,7 +339,7 @@ socket.on("received", (data) => {
     '<div class="msb"><div onclick="DoSmilie(\'' +
     data.username +
     '\');" class="cover" style="background-image: url(' +
-    data.username +
+    data.userphoto +
     ');"></div><div class="cover_n">' +
     data.username +
     "</div><span>" +
@@ -344,7 +363,7 @@ socket.on("received", (data) => {
           '<div class="msb"><div onclick="DoSmilie(\'' +
           message.username +
           '\');" class="cover" style="background-image: url(' +
-          message.username +
+          message.userphoto +
           ');"></div><div class="cover_n">' +
           message.username +
           "</div><span>" +

@@ -47,14 +47,27 @@ io.on("connection", (socket) => {
     socket.username = username;
   });
 
+  socket.on("userphoto", (userphoto) => {
+    socket.userphoto = userphoto;
+  });
+
   socket.on("chat message", function (message) {
     const username = socket.username;
+    const userphoto = socket.userphoto;
     console.log("[" + timeParse + "]" + " User " + username + ": " + message);
-    socket.broadcast.emit("received", { message: message, username: username });
+    socket.broadcast.emit("received", {
+      message: message,
+      username: username,
+      userphoto: userphoto,
+    });
 
     // SAVE TO MONGODB
     connect.then((db) => {
-      let chatMessage = new Chat({ message: message, username: username });
+      let chatMessage = new Chat({
+        message: message,
+        username: username,
+        userphoto: userphoto,
+      });
       chatMessage.save();
     });
   });

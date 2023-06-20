@@ -18,6 +18,6 @@ const chatSchema = new Schema(
   }
 );
 
-let Chat = mongoose.model("LChatLogs", chatSchema);
+let Chat = mongoose.model("LChatApp-Logs", chatSchema);
 
 module.exports = Chat;
