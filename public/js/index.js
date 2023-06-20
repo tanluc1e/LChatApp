@@ -193,6 +193,7 @@ function gif_box() {
   document.getElementById("gif_box").classList.toggle("open");
 }
 
+// EMOJI PARSE TO TEXT
 function DoSmilie(addSmilie) {
   var revisedmsgage,
     currentmsgage = document.getElementById("emoji_c").value;
@@ -201,6 +202,71 @@ function DoSmilie(addSmilie) {
   document.getElementById("emoji_c").focus();
   return;
 }
+
+// GIF SEARCH
+function giphyApiSearch(search) {
+  var url,
+    xmlHttp = new XMLHttpRequest();
+
+  search = search.split(" ").join("+");
+  url =
+    "https://api.giphy.com/v1/gifs/search?q=" +
+    search +
+    "&api_key=ZfWEu6nQUFRyjGM9em6z8ons59Tv2qBc&limit=9";
+
+  xmlHttp.onreadystatechange = function () {
+    if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
+      addPics(xmlHttp.responseText);
+  };
+  xmlHttp.open("GET", url, true);
+  xmlHttp.send(null);
+}
+
+function addPics(gif) {
+  document.querySelector(".pic-container").innerHTML = "";
+  gif = JSON.parse(gif);
+  if (gif.data.length > 0) {
+    for (var x = 0; x < gif.data.length; x++) {
+      var el = document.createElement("img");
+      el.setAttribute("id", "gifpasted");
+      el.setAttribute("src", gif.data[x].images.original.url);
+      el.setAttribute(
+        "onclick",
+        "gif_box();DoSmilie('[img]" +
+          gif.data[x].images.original.url +
+          "[/img]');"
+      );
+      document.querySelector(".pic-container").appendChild(el);
+    }
+  } else {
+    document.querySelector(".error-container").innerHTML =
+      "Không tìm thấy gì.<br>Hãy thử tìm kiếm cái khác!";
+  }
+}
+
+function startGiphySearch(e) {
+  e.preventDefault();
+  var userSearch = document.querySelector("#gif-search-input").value;
+  document.querySelector("#gif-search-input").value = "";
+  document.querySelector(".error-container").innerHTML = "";
+  giphyApiSearch(userSearch);
+}
+
+document
+  .querySelector("#gif-search-form")
+  .addEventListener("submit", function (e) {
+    startGiphySearch(e);
+  });
+
+document.querySelector("#search-btn").addEventListener(
+  "click",
+  function (e) {
+    startGiphySearch(e);
+  },
+  false
+);
+
+giphyApiSearch("cat");
 
 // ====================== HANDLES ======================
 // LOGIN
