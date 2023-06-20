@@ -6,10 +6,8 @@
     <meta name="mobile-web-app-capable" content="yes" />
     <meta name="application-name" content="LChat" />
     <meta name="theme-color" content="#2A56C6" />
+    <link rel="shortcut icon" type="image/x-icon" href="./img/logoColor.png" />
     <title>LChat</title>
-
-    <link rel="manifest" href="manifest.json" />
-    <link rel="apple-touch-icon-precomposed" href="./img/chat-icon-empty.png" />
 
     <link rel="stylesheet" type="text/css" href="/css/style.css" />
     <link
@@ -18,7 +16,7 @@
     />
   </head>
   <body>
-    <!-- <div class="initModal">
+    <div class="initModal">
       <div id="step1" class="one_step">
         <img src="./img/logoColor.png" alt="LChat" />
         <h1 class="appname">LChat</h1>
@@ -38,9 +36,10 @@
           id="username"
           axlength="25"
           placeholder="Tên của tôi là?"
+          onkeyup="loginEnter(event, this.value)"
         />
       </div>
-    </div> -->
+    </div>
 
     <div class="header">
       <div class="headname">LChat</div>
@@ -97,6 +96,7 @@
       integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM="
       crossorigin="anonymous"
     ></script>
+    <script src="https://cdn.jsdelivr.net/gh/rexeze/formatTimeStamp/src/index-cdn.js"></script>
     <script src="/js/index.js"></script>
   </body>
 </html>
