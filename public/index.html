@@ -44,7 +44,7 @@
     <div class="header">
       <div class="headname">LChat</div>
       <span id="status"></span>
-      <a href="javascript:%20x()" onclick="op_set();" class="cmd-m chk"
+      <a onclick="op_set();" class="cmd-m chk"
         ><i class="material-icons">settings</i></a
       >
       <div id="set-i" class="set-i chk">
@@ -88,6 +88,114 @@
       </form>
       <div class="error-container"></div>
       <div class="pic-container"></div>
+    </div>
+
+    <div id="emoji_b" class="emoji_b-alert">
+      <div id="es_togg" class="emoji_b-alert-body vis">
+        <div class="es-board emoji_b-alert-question">
+          <span onclick="gif_box();emoji_alert();" class="cmd-i"
+            ><i class="material-icons gif-btn">gif</i></span
+          >
+          <span onclick="DoSmilie('[img][/img]');emoji_alert();" class="cmd-i"
+            ><i class="material-icons">image</i></span
+          >
+          <span onclick="DoSmilie('#a01');emoji_alert();"
+            ><img class="emoji_a" src="./img/emoji/a01.png"
+          /></span>
+          <span onclick="DoSmilie('#a02');emoji_alert();"
+            ><img class="emoji_a" src="./img/emoji/a02.png"
+          /></span>
+          <span onclick="DoSmilie('#a03');emoji_alert();"
+            ><img class="emoji_a" src="./img/emoji/a03.png"
+          /></span>
+          <span onclick="DoSmilie('#a04');emoji_alert();"
+            ><img class="emoji_a" src="./img/emoji/a04.png"
+          /></span>
+          <span onclick="DoSmilie('#a05');emoji_alert();"
+            ><img class="emoji_a" src="./img/emoji/a05.png"
+          /></span>
+          <span onclick="DoSmilie('#a06');emoji_alert();"
+            ><img class="emoji_a" src="./img/emoji/a06.png"
+          /></span>
+          <span onclick="DoSmilie('#a07');emoji_alert();"
+            ><img class="emoji_a" src="./img/emoji/a07.png"
+          /></span>
+          <span onclick="DoSmilie('#a08');emoji_alert();"
+            ><img class="emoji_a" src="./img/emoji/a08.png"
+          /></span>
+          <span onclick="DoSmilie('#a09');emoji_alert();"
+            ><img class="emoji_a" src="./img/emoji/a09.png"
+          /></span>
+        </div>
+
+        <div class="es-board sticker_b-alert-question">
+          <span onclick="DoSmilie('#cat1.1');es_toggle();emoji_alert();">
+            <img class="sticker_a" src="./img/stickers/cat/cat1.webp" />
+          </span>
+          <span onclick="DoSmilie('#cat1.2');es_toggle();emoji_alert();">
+            <img class="sticker_a" src="./img/stickers/cat/cat2.webp" />
+          </span>
+          <span onclick="DoSmilie('#cat1.3');es_toggle();emoji_alert();">
+            <img class="sticker_a" src="./img/stickers/cat/cat3.webp" />
+          </span>
+          <span onclick="DoSmilie('#cat1.4');es_toggle();emoji_alert();">
+            <img class="sticker_a" src="./img/stickers/cat/cat4.webp" />
+          </span>
+          <span onclick="DoSmilie('#cat1.5');es_toggle();emoji_alert();">
+            <img class="sticker_a" src="./img/stickers/cat/cat5.webp" />
+          </span>
+          <span onclick="DoSmilie('#cat1.6');es_toggle();emoji_alert();">
+            <img class="sticker_a" src="./img/stickers/cat/cat6.webp" />
+          </span>
+          <span onclick="DoSmilie('#cat2.1');es_toggle();emoji_alert();">
+            <img class="sticker_a" src="./img/stickers/cat2/cat1.webp" />
+          </span>
+          <span onclick="DoSmilie('#cat2.2');es_toggle();emoji_alert();">
+            <img class="sticker_a" src="./img/stickers/cat2/cat2.webp" />
+          </span>
+          <span onclick="DoSmilie('#cat2.3');es_toggle();emoji_alert();">
+            <img class="sticker_a" src="./img/stickers/cat2/cat3.webp" />
+          </span>
+          <span onclick="DoSmilie('#cat2.4');es_toggle();emoji_alert();">
+            <img class="sticker_a" src="./img/stickers/cat2/cat4.webp" />
+          </span>
+          <span onclick="DoSmilie('#cat2.5');es_toggle();emoji_alert();">
+            <img class="sticker_a" src="./img/stickers/cat2/cat5.webp" />
+          </span>
+          <span onclick="DoSmilie('#cat2.6');es_toggle();emoji_alert();">
+            <img class="sticker_a" src="./img/stickers/cat2/cat6.webp" />
+          </span>
+          <span onclick="DoSmilie('#cat2.7');es_toggle();emoji_alert();">
+            <img class="sticker_a" src="./img/stickers/cat2/cat7.webp" />
+          </span>
+          <span onclick="DoSmilie('#cat2.8');es_toggle();emoji_alert();">
+            <img class="sticker_a" src="./img/stickers/cat2/cat8.webp" />
+          </span>
+          <span onclick="DoSmilie('#cat2.9');es_toggle();emoji_alert();">
+            <img class="sticker_a" src="./img/stickers/cat2/cat9.webp" />
+          </span>
+          <span onclick="DoSmilie('#cat2.10');es_toggle();emoji_alert();">
+            <img class="sticker_a" src="./img/stickers/cat2/cat10.webp" />
+          </span>
+          <span onclick="DoSmilie('#cat2.11');es_toggle();emoji_alert();">
+            <img class="sticker_a" src="./img/stickers/cat2/cat11.webp" />
+          </span>
+        </div>
+        <div class="emoji_b-alert-option-body">
+          <button type="button" class="emoji_b-but">
+            <div>
+              <a
+                id="toggle"
+                class="toggle emoji_b-but-opt"
+                onclick="es_toggle()"
+              >
+                <i class="material-icons menu">arrow_forward</i>
+                <i class="material-icons arrow out">arrow_back</i>
+              </a>
+            </div>
+          </button>
+        </div>
+      </div>
     </div>
 
     <script src="/js/socket.js"></script>

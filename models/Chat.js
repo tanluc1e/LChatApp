@@ -9,6 +9,9 @@ const chatSchema = new Schema(
     username: {
       type: String,
     },
+    userphoto: {
+      type: String,
+    },
   },
   {
     timestamps: true,
